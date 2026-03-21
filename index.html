@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIGOR 量子深層賦活儀 | 重拾健康，從此充滿希望</title>
+  <meta name="description" content="VIGOR 量子深層賦活儀，以 46 種微量元素放射出 2–80 微米寬廣頻譜，穿透深達 9 公分，啟動您身體最原始的自我療癒力量。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: #fff;
+      color: #1e293b;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid #e2e8f0;
+      box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 24px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo-icon {
+      width: 38px; height: 38px; border-radius: 12px;
+      background: linear-gradient(135deg, #0ea5e9, #14b8a6);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(14,165,233,0.3);
+      font-size: 18px;
+    }
+    .nav-logo-text { font-weight: 900; font-size: 20px; color: #0f172a; }
+    .nav-logo-sub { font-size: 13px; color: #94a3b8; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a {
+      font-size: 14px; font-weight: 500; color: #64748b;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #0ea5e9; }
+    .btn-primary {
+      background: linear-gradient(135deg, #0ea5e9, #14b8a6);
+      color: #fff; font-weight: 700; font-size: 14px;
+      padding: 10px 22px; border-radius: 10px; border: none;
+      cursor: pointer; text-decoration: none;
+      box-shadow: 0 4px 14px rgba(14,165,233,0.35);
+      transition: opacity 0.2s, transform 0.2s;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-secondary {
+      background: #fff; color: #0ea5e9; font-weight: 600; font-size: 14px;
+      padding: 10px 22px; border-radius: 10px;
+      border: 1.5px solid #bae6fd; cursor: pointer; text-decoration: none;
+      transition: background 0.2s;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn-secondary:hover { background: #f0f9ff; }
+    @media (max-width: 768px) {
+      .nav-links a { display: none; }
+      .nav-logo-sub { display: none; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 50%, #f0fdfa 100%);
+      display: flex; align-items: center; justify-content: center;
+      padding: 100px 24px 60px;
+      position: relative; overflow: hidden;
+      text-align: center;
+    }
+    .hero-blob1 {
+      position: absolute; top: -100px; right: -100px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: rgba(186,230,253,0.4); filter: blur(80px); pointer-events: none;
+    }
+    .hero-blob2 {
+      position: absolute; bottom: 0; left: -100px;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: rgba(153,246,228,0.3); filter: blur(80px); pointer-events: none;
+    }
+    .hero-blob3 {
+      position: absolute; bottom: 100px; right: 30%;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: rgba(254,243,199,0.5); filter: blur(60px); pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 820px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; border: 1px solid #bae6fd; border-radius: 999px;
+      padding: 8px 20px; font-size: 13px; color: #0369a1; font-weight: 500;
+      margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .hero-badge span { color: #f59e0b; }
+    h1 {
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 900; line-height: 1.15; margin-bottom: 24px; color: #0f172a;
+    }
+    h1 .gradient-text {
+      background: linear-gradient(135deg, #0ea5e9, #14b8a6, #10b981);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-desc {
+      font-size: 18px; color: #64748b; max-width: 600px; margin: 0 auto 12px;
+      line-height: 1.8;
+    }
+    .hero-desc strong { color: #334155; }
+    .hero-sub { font-size: 14px; color: #14b8a6; font-weight: 500; margin-bottom: 40px; }
+    .hero-sub strong { color: #0f766e; }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .hero-scroll {
+      margin-top: 60px; color: #cbd5e1; font-size: 24px;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    /* ── STATS ── */
+    .stats {
+      background: linear-gradient(135deg, #0ea5e9, #14b8a6, #10b981);
+      padding: 56px 24px;
+    }
+    .stats-inner {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+      text-align: center;
+    }
+    .stat-value {
+      font-size: clamp(36px, 5vw, 52px); font-weight: 900; color: #fff;
+      line-height: 1;
+    }
+    .stat-value span { font-size: 0.55em; }
+    .stat-label { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 8px; font-weight: 500; }
+    @media (max-width: 640px) {
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 24px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      border-radius: 999px; padding: 6px 16px;
+      font-size: 13px; font-weight: 500; margin-bottom: 16px;
+    }
+    h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 900; color: #0f172a; margin-bottom: 16px; }
+    .section-desc { font-size: 16px; color: #64748b; max-width: 560px; margin: 0 auto; }
+
+    /* ── FEATURES ── */
+    .features-bg { background: #f8fafc; }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    }
+    .feature-card {
+      background: #fff; border-radius: 20px; padding: 28px;
+      border: 1px solid #e2e8f0;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .feature-card:hover { box-shadow: 0 12px 32px rgba(0,0,0,0.08); transform: translateY(-4px); }
+    .feature-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 20px;
+    }
+    .feature-title { font-weight: 700; font-size: 16px; color: #0f172a; margin-bottom: 10px; }
+    .feature-desc { font-size: 14px; color: #64748b; line-height: 1.7; }
+    @media (max-width: 900px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .features-grid { grid-template-columns: 1fr; } }
+
+    /* ── SPECS ── */
+    .specs-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    }
+    .specs-left h2 { text-align: left; }
+    .specs-left p { color: #64748b; line-height: 1.8; margin-bottom: 24px; }
+    .check-list { list-style: none; }
+    .check-list li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px; color: #475569; padding: 6px 0;
+    }
+    .check-list li::before {
+      content: "✓"; color: #10b981; font-weight: 700;
+      width: 20px; height: 20px; background: #d1fae5;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 11px; flex-shrink: 0;
+    }
+    .specs-table { display: flex; flex-direction: column; gap: 10px; }
+    .spec-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 18px; border-radius: 12px;
+      background: linear-gradient(135deg, #f0f9ff, #f0fdfa);
+      border: 1px solid #bae6fd;
+    }
+    .spec-label { font-size: 14px; color: #475569; font-weight: 500; }
+    .spec-value { font-size: 14px; color: #0d9488; font-weight: 700; }
+    @media (max-width: 768px) { .specs-grid { grid-template-columns: 1fr; } }
+
+    /* ── TARGET ── */
+    .target-bg { background: linear-gradient(135deg, #fffbeb, #ffffff, #f0f9ff); }
+    .target-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+    }
+    .target-card {
+      display: flex; align-items: flex-start; gap: 20px;
+      padding: 24px; border-radius: 20px; border: 1px solid;
+      transition: box-shadow 0.3s;
+    }
+    .target-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+    .target-emoji { font-size: 36px; flex-shrink: 0; }
+    .target-title { font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+    .target-desc { font-size: 14px; color: #64748b; line-height: 1.7; }
+    @media (max-width: 640px) { .target-grid { grid-template-columns: 1fr; } }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-bg { background: #fff; }
+    .testimonial-main {
+      max-width: 760px; margin: 0 auto;
+    }
+    .testimonial-card {
+      background: linear-gradient(135deg, #f0f9ff, #f0fdfa);
+      border: 1px solid #bae6fd; border-radius: 28px;
+      padding: 40px 44px; position: relative;
+    }
+    .quote-icon { font-size: 48px; color: #bae6fd; line-height: 1; margin-bottom: 20px; }
+    .testimonial-text {
+      font-size: 18px; color: #334155; line-height: 1.8;
+      min-height: 100px; margin-bottom: 28px;
+      transition: opacity 0.4s;
+    }
+    .testimonial-footer { display: flex; align-items: center; justify-content: space-between; }
+    .testimonial-author { font-weight: 700; color: #0f172a; }
+    .testimonial-meta { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
+    .tag {
+      display: inline-flex; align-items: center;
+      padding: 3px 10px; border-radius: 999px;
+      font-size: 12px; font-weight: 500;
+      background: #ccfbf1; color: #0f766e;
+    }
+    .testimonial-years { font-size: 12px; color: #94a3b8; }
+    .testimonial-nav { display: flex; gap: 8px; }
+    .nav-btn {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #fff; border: 1.5px solid #e2e8f0;
+      cursor: pointer; font-size: 16px; color: #64748b;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .nav-btn:hover { background: #f0f9ff; border-color: #bae6fd; }
+    .dots { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
+    .dot {
+      height: 8px; border-radius: 4px; background: #e2e8f0;
+      cursor: pointer; transition: width 0.3s, background 0.3s;
+      width: 8px;
+    }
+    .dot.active { background: #14b8a6; width: 24px; }
+    .category-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 40px; }
+    .cat-tag {
+      padding: 8px 18px; border-radius: 999px;
+      background: #f1f5f9; color: #64748b; font-size: 13px; font-weight: 500;
+      cursor: default; transition: background 0.2s, color 0.2s;
+    }
+    .cat-tag:hover { background: #e0f2fe; color: #0369a1; }
+    @media (max-width: 640px) {
+      .testimonial-card { padding: 28px 24px; }
+      .testimonial-text { font-size: 16px; }
+    }
+
+    /* ── USAGE ── */
+    .usage-bg { background: #f8fafc; }
+    .usage-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    }
+    .usage-card {
+      background: #fff; border-radius: 20px; padding: 28px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: box-shadow 0.3s;
+    }
+    .usage-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .step-num {
+      width: 42px; height: 42px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 900; font-size: 14px; margin-bottom: 18px;
+    }
+    .usage-title { font-weight: 700; color: #0f172a; margin-bottom: 10px; }
+    .usage-desc { font-size: 14px; color: #64748b; line-height: 1.7; }
+    .usage-tip {
+      margin-top: 32px; padding: 18px 24px; border-radius: 16px;
+      background: #fffbeb; border: 1px solid #fde68a;
+      font-size: 14px; color: #92400e; text-align: center; line-height: 1.7;
+    }
+    @media (max-width: 900px) { .usage-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .usage-grid { grid-template-columns: 1fr; } }
+
+    /* ── PRICING ── */
+    .pricing-bg {
+      background: linear-gradient(135deg, #0ea5e9, #14b8a6, #10b981);
+      padding: 80px 24px;
+    }
+    .pricing-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+    .pricing-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.2); border-radius: 999px;
+      padding: 8px 20px; font-size: 13px; color: #fff; font-weight: 500;
+      margin-bottom: 24px;
+    }
+    .pricing-inner h2 { color: #fff; margin-bottom: 20px; }
+    .pricing-desc { color: rgba(255,255,255,0.85); line-height: 1.8; margin-bottom: 32px; font-size: 16px; }
+    .pricing-desc strong { color: #fff; }
+    .pricing-perks {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto;
+    }
+    .perk {
+      padding: 18px; border-radius: 16px;
+      background: rgba(255,255,255,0.2); text-align: center;
+    }
+    .perk-emoji { font-size: 28px; margin-bottom: 8px; }
+    .perk-label { font-size: 12px; color: rgba(255,255,255,0.9); font-weight: 500; }
+    .btn-white {
+      background: #fff; color: #0d9488; font-weight: 700; font-size: 18px;
+      padding: 18px 48px; border-radius: 16px; border: none;
+      cursor: pointer; text-decoration: none;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(0,0,0,0.2); }
+    .pricing-note { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 16px; }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+    }
+    .contact-left h2 { text-align: left; }
+    .contact-left p { color: #64748b; line-height: 1.8; margin-bottom: 28px; }
+    .contact-info { display: flex; flex-direction: column; gap: 14px; }
+    .contact-item {
+      display: flex; align-items: center; gap: 16px;
+      padding: 16px 20px; border-radius: 14px; border: 1px solid;
+    }
+    .contact-icon {
+      width: 42px; height: 42px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
+    }
+    .contact-label { font-size: 12px; color: #94a3b8; margin-bottom: 2px; }
+    .contact-value { font-weight: 600; color: #0f172a; }
+    .form-card {
+      background: linear-gradient(135deg, #f0f9ff, #f0fdfa);
+      border: 1px solid #bae6fd; border-radius: 28px; padding: 36px;
+      box-shadow: 0 8px 32px rgba(14,165,233,0.1);
+    }
+    .form-title { font-weight: 700; font-size: 20px; color: #0f172a; margin-bottom: 24px; }
+    .form-group { margin-bottom: 18px; }
+    .form-label { font-size: 13px; color: #64748b; font-weight: 500; display: block; margin-bottom: 8px; }
+    .form-input, .form-select, .form-textarea {
+      width: 100%; background: #fff; border: 1.5px solid #e2e8f0;
+      border-radius: 12px; padding: 12px 16px; font-size: 14px; color: #334155;
+      font-family: 'Noto Sans TC', sans-serif;
+      outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: #cbd5e1; }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: #7dd3fc; box-shadow: 0 0 0 3px rgba(125,211,252,0.2);
+    }
+    .form-textarea { resize: none; }
+    .form-submit {
+      width: 100%; background: linear-gradient(135deg, #0ea5e9, #14b8a6);
+      color: #fff; font-weight: 700; font-size: 16px;
+      padding: 14px; border-radius: 12px; border: none;
+      cursor: pointer; font-family: 'Noto Sans TC', sans-serif;
+      box-shadow: 0 4px 16px rgba(14,165,233,0.3);
+      transition: opacity 0.2s, transform 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .form-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+    .form-note { font-size: 12px; color: #94a3b8; text-align: center; margin-top: 12px; }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 36px 24px; border-top: 1px solid #e2e8f0; background: #f8fafc;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo { display: flex; align-items: center; gap: 10px; }
+    .footer-logo-icon {
+      width: 32px; height: 32px; border-radius: 10px;
+      background: linear-gradient(135deg, #0ea5e9, #14b8a6);
+      display: flex; align-items: center; justify-content: center; font-size: 14px;
+    }
+    .footer-logo-text { font-weight: 700; color: #334155; }
+    .footer-note { font-size: 12px; color: #94a3b8; text-align: center; }
+
+    /* ── Toast ── */
+    #toast {
+      position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: #0f172a; color: #fff; padding: 14px 28px; border-radius: 12px;
+      font-size: 14px; font-weight: 500; z-index: 9999;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">☀️</div>
+      <span class="nav-logo-text">VIGOR</span>
+      <span class="nav-logo-sub">量子深層賦活儀</span>
+    </a>
+    <div class="nav-links">
+      <a href="#features">產品特色</a>
+      <a href="#testimonials">客戶見證</a>
+      <a href="#contact">聯絡我們</a>
+      <a href="#contact" class="btn-primary">預約體驗 →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-blob1"></div>
+  <div class="hero-blob2"></div>
+  <div class="hero-blob3"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span>✦</span> 美國 ATC 實驗室 · 12 年研發 · 諾貝爾獎提名科學家監製
+    </div>
+    <h1>
+      重拾健康，<br>
+      <span class="gradient-text">從此充滿希望</span>
+    </h1>
+    <p class="hero-desc">
+      VIGOR 量子深層賦活儀，以 <strong>46 種微量元素</strong> 放射出 2–80 微米寬廣頻譜，
+      穿透深達 <strong>9 公分</strong>，啟動您身體最原始的自我療癒力量。
+    </p>
+    <p class="hero-sub">超過 <strong>34 份</strong> 真實客戶見證 · 涵蓋 8 大健康類別</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary" style="font-size:16px;padding:14px 32px;border-radius:14px;">立即預約體驗 →</a>
+      <a href="#testimonials" class="btn-secondary" style="font-size:16px;padding:14px 32px;border-radius:14px;">▷ 查看客戶見證</a>
+    </div>
+    <div class="hero-scroll">↓</div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-value" id="s1">0<span>年</span></div>
+      <div class="stat-label">研發年限</div>
+    </div>
+    <div>
+      <div class="stat-value" id="s2">0<span>份</span></div>
+      <div class="stat-label">真實客戶見證</div>
+    </div>
+    <div>
+      <div class="stat-value" id="s3">0<span>公分</span></div>
+      <div class="stat-label">最大穿透深度</div>
+    </div>
+    <div>
+      <div class="stat-value" id="s4">0<span>種</span></div>
+      <div class="stat-label">有益微量元素</div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features-bg" id="features">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-badge" style="background:#e0f2fe;color:#0369a1;">產品核心優勢</div>
+      <h2>為什麼選擇 VIGOR？</h2>
+      <p class="section-desc">結合頂尖科學研究與 12 年臨床驗證，提供市面上最先進的非侵入性深層療癒解決方案</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#fff7ed;">⚡</div>
+        <div class="feature-title">深層穿透技術</div>
+        <div class="feature-desc">頻譜穿透力深達人體 0.5–9 公分，直達血管、淋巴腺及神經系統，遠超市售遠紅外線產品。</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#f0fdf4;">🛡️</div>
+        <div class="feature-title">激發自體免疫</div>
+        <div class="feature-desc">啟動人體自我療癒機制，著重「機理的活化與重建」，讓身體恢復原本的自癒能力。</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#fff1f2;">❤️</div>
+        <div class="feature-title">無副作用療癒</div>
+        <div class="feature-desc">完全非侵入性設計，避免西藥「越用越重」的依賴性與副作用，安全使用無後顧之憂。</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#f5f3ff;">⭐</div>
+        <div class="feature-title">12 年研發背景</div>
+        <div class="feature-desc">由曾獲兩次諾貝爾獎提名的布蘭德博士帶領美國 ATC 實驗室歷經 12 年研發，科學背書有保障。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section>
+  <div class="section-inner">
+    <div class="specs-grid">
+      <div class="specs-left">
+        <div class="section-badge" style="background:#f0fdfa;color:#0d9488;display:inline-flex;margin-bottom:16px;">技術規格</div>
+        <h2>頂尖科技，<br><span class="gradient-text">精準規格</span></h2>
+        <p>每一項規格都經過嚴格的科學驗證，確保能量輸出的精準性與安全性。從頻譜寬度到穿透深度，VIGOR 在每個技術指標上都達到業界頂尖水準。</p>
+        <ul class="check-list">
+          <li>美國 ATC Nutriceucial Lab 研發認證</li>
+          <li>曾獲兩次諾貝爾獎提名的布蘭德博士監製</li>
+          <li>美國、英國、俄國等前 25 大醫院臨床使用</li>
+          <li>非侵入性設計，居家使用安全無虞</li>
+        </ul>
+      </div>
+      <div class="specs-table">
+        <div class="spec-row"><span class="spec-label">能量頻譜範圍</span><span class="spec-value">2 – 80 微米</span></div>
+        <div class="spec-row"><span class="spec-label">恆溫放射範圍</span><span class="spec-value">21°C – 395°C</span></div>
+        <div class="spec-row"><span class="spec-label">穿透深度</span><span class="spec-value">0.5 – 9 公分</span></div>
+        <div class="spec-row"><span class="spec-label">自動溫度調整</span><span class="spec-value">± 15°C 智能補償</span></div>
+        <div class="spec-row"><span class="spec-label">微量元素種類</span><span class="spec-value">46 種有益元素</span></div>
+        <div class="spec-row"><span class="spec-label">研發年限</span><span class="spec-value">12 年臨床研究</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TARGET -->
+<section class="target-bg">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-badge" style="background:#fffbeb;color:#b45309;">適用族群</div>
+      <h2>誰最需要 VIGOR？</h2>
+      <p class="section-desc">無論你是追求頂級健康體驗的 VVIP，還是正在尋找非藥物調理方案的患者，VIGOR 都能提供最適合的解決方案</p>
+    </div>
+    <div class="target-grid">
+      <div class="target-card" style="background:#f0f9ff;border-color:#bae6fd;">
+        <div class="target-emoji">🏌️</div>
+        <div>
+          <div class="target-title">VVIP 高淨值人士</div>
+          <div class="target-desc">重視隱私與頂級健康體驗，追求最優質的生活品質，將健康視為最重要的資產。</div>
+        </div>
+      </div>
+      <div class="target-card" style="background:#f0fdfa;border-color:#99f6e4;">
+        <div class="target-emoji">🩺</div>
+        <div>
+          <div class="target-title">慢性病與亞健康族群</div>
+          <div class="target-desc">尋求非藥物、無副作用的輔助調理方案，希望從根本改善身體狀況。</div>
+        </div>
+      </div>
+      <div class="target-card" style="background:#fffbeb;border-color:#fde68a;">
+        <div class="target-emoji">🏥</div>
+        <div>
+          <div class="target-title">手術後復健者</div>
+          <div class="target-desc">需要加速傷口癒合與恢復元氣，希望縮短復健期、減少疼痛的患者。</div>
+        </div>
+      </div>
+      <div class="target-card" style="background:#fff1f2;border-color:#fecdd3;">
+        <div class="target-emoji">🏋️</div>
+        <div>
+          <div class="target-title">高階運動員</div>
+          <div class="target-desc">尋求快速緩解肌肉拉傷與運動傷害，提升訓練效率與競技表現的專業人士。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-bg" id="testimonials">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-badge" style="background:#fff1f2;color:#be123c;">真實見證</div>
+      <h2>他們的改變，就是最好的證明</h2>
+      <p class="section-desc">超過 34 份來自各行各業的真實使用見證，涵蓋睡眠、過敏、手術恢復、慢性病等 8 大健康類別</p>
+    </div>
+    <div class="testimonial-main">
+      <div class="testimonial-card">
+        <div class="quote-icon">"</div>
+        <div class="testimonial-text" id="t-text"></div>
+        <div class="testimonial-footer">
+          <div>
+            <div class="testimonial-author" id="t-name"></div>
+            <div class="testimonial-meta">
+              <span class="tag" id="t-cat"></span>
+              <span class="testimonial-years" id="t-years"></span>
+            </div>
+          </div>
+          <div class="testimonial-nav">
+            <button class="nav-btn" onclick="prevT()">‹</button>
+            <button class="nav-btn" onclick="nextT()">›</button>
+          </div>
+        </div>
+      </div>
+      <div class="dots" id="dots"></div>
+    </div>
+    <div class="category-tags">
+      <span class="cat-tag">睡眠改善</span>
+      <span class="cat-tag">過敏症狀</span>
+      <span class="cat-tag">運動傷害</span>
+      <span class="cat-tag">手術恢復</span>
+      <span class="cat-tag">慢性病管理</span>
+      <span class="cat-tag">美容代謝</span>
+      <span class="cat-tag">心理健康</span>
+      <span class="cat-tag">醫療專業</span>
+    </div>
+  </div>
+</section>
+
+<!-- USAGE -->
+<section class="usage-bg">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-badge" style="background:#f0fdf4;color:#15803d;">使用方式</div>
+      <h2>簡單四步驟，開啟療癒之旅</h2>
+      <p class="section-desc">VIGOR 的操作極為簡便，在家即可享受頂級療癒體驗，無需專業醫療背景</p>
+    </div>
+    <div class="usage-grid">
+      <div class="usage-card">
+        <div class="step-num" style="background:#0ea5e9;">01</div>
+        <div class="usage-title">選擇照射部位</div>
+        <div class="usage-desc">根據需要改善的症狀，選擇對應的照射部位（頭頸、胸腔、腰背、四肢等）</div>
+      </div>
+      <div class="usage-card">
+        <div class="step-num" style="background:#14b8a6;">02</div>
+        <div class="usage-title">調整距離</div>
+        <div class="usage-desc">保持儀器與身體距離約 20–35 公分，感受到溫熱感即為最佳距離</div>
+      </div>
+      <div class="usage-card">
+        <div class="step-num" style="background:#f59e0b;">03</div>
+        <div class="usage-title">設定時間</div>
+        <div class="usage-desc">一般照射 15–40 分鐘，心臟部位從 15 分鐘開始循序漸進，不超過 30 分鐘</div>
+      </div>
+      <div class="usage-card">
+        <div class="step-num" style="background:#10b981;">04</div>
+        <div class="usage-title">補充水分</div>
+        <div class="usage-desc">照射前後各補充 200cc 溫開水，協助代謝排毒，提升療癒效果</div>
+      </div>
+    </div>
+    <div class="usage-tip">
+      💡 <strong>溫馨提示：</strong>眼睛照射時請以小手帕或眼罩輕蓋，照射後可能出現排毒反應（如頻繁排尿），屬正常現象。
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<div class="pricing-bg">
+  <div class="pricing-inner">
+    <div class="pricing-badge">✨ 頂級健康投資</div>
+    <h2>您的健康，值得最好的</h2>
+    <p class="pricing-desc">
+      VIGOR 量子深層賦活儀定價 <strong>NT$ 195,000</strong>，
+      是一項一次性的頂級健康投資。相較於長期藥物費用與醫療支出，
+      VIGOR 為您和家人帶來的長期健康價值遠超其售價。
+    </p>
+    <div class="pricing-perks">
+      <div class="perk"><div class="perk-emoji">🏅</div><div class="perk-label">VIP 金屬保固卡</div></div>
+      <div class="perk"><div class="perk-emoji">📖</div><div class="perk-label">精裝使用手冊</div></div>
+      <div class="perk"><div class="perk-emoji">📊</div><div class="perk-label">90 天健康追蹤</div></div>
+    </div>
+    <a href="#contact" class="btn-white">立即預約專屬體驗 →</a>
+    <p class="pricing-note">提供免費到府體驗服務 · 專業顧問一對一諮詢</p>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="section-badge" style="background:#e0f2fe;color:#0369a1;display:inline-flex;margin-bottom:16px;">聯絡我們</div>
+        <h2>開始您的<br><span class="gradient-text">療癒之旅</span></h2>
+        <p>我們的專業健康顧問將為您提供一對一的個人化諮詢，根據您的健康需求制定最適合的使用方案，並安排免費到府體驗服務。</p>
+        <div class="contact-info">
+          <div class="contact-item" style="background:#f0f9ff;border-color:#bae6fd;">
+            <div class="contact-icon" style="background:#e0f2fe;">📞</div>
+            <div>
+              <div class="contact-label">電話諮詢</div>
+              <div class="contact-value">0800-VIGOR-00</div>
+            </div>
+          </div>
+          <div class="contact-item" style="background:#f0fdfa;border-color:#99f6e4;">
+            <div class="contact-icon" style="background:#ccfbf1;">✉️</div>
+            <div>
+              <div class="contact-label">電子郵件</div>
+              <div class="contact-value">info@vigor-health.tw</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-card">
+        <div class="form-title">預約免費體驗</div>
+        <form onsubmit="submitForm(event)">
+          <div class="form-group">
+            <label class="form-label">您的姓名</label>
+            <input type="text" class="form-input" placeholder="請輸入姓名" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">聯絡電話</label>
+            <input type="tel" class="form-input" placeholder="請輸入電話號碼" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">主要健康需求</label>
+            <select class="form-select">
+              <option value="">請選擇</option>
+              <option>睡眠問題</option>
+              <option>過敏症狀</option>
+              <option>運動傷害</option>
+              <option>手術恢復</option>
+              <option>慢性病管理</option>
+              <option>美容代謝</option>
+              <option>其他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">備註說明（選填）</label>
+            <textarea class="form-textarea" rows="3" placeholder="請簡述您的健康狀況或問題..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            送出預約申請 →
+          </button>
+          <p class="form-note">我們將在 24 小時內與您聯繫</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="footer-logo-icon">☀️</div>
+      <span class="footer-logo-text">VIGOR 量子深層賦活儀</span>
+    </div>
+    <div class="footer-note">© 2026 惟光國際 · 本產品為健康輔助設備，不替代醫療診斷與治療</div>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div id="toast">✅ 預約申請已送出！我們將在 24 小時內與您聯繫。</div>
+
+<script>
+  // ── Testimonials ──
+  const testimonials = [
+    { name: "林女士", category: "睡眠改善", content: "每晚固定照射頭頸部 40 分鐘，快速入睡，完全取代了安眠藥。意外發現打噴嚏、鼻涕問題也跟著消失，過敏造成的眼睛酸澀也好了！", years: "使用 3 年" },
+    { name: "陳先生", category: "手術恢復", content: "牙齒開刀後非常疼痛，照射兩次後疼痛消失 90%。六次照射後，醫師驚訝於傷口愈合速度，已開始對臨床報告進行研究。", years: "使用 2 年" },
+    { name: "王教練", category: "運動傷害", content: "大約 15 年前引進 3 台給選手使用，對肌肉拉傷、筋骨酸痛、運動傷害有驚人效用，累積了許多令人振奮的見證案例。", years: "使用 15 年" },
+    { name: "張女士", category: "慢性病管理", content: "因嚴重類風濕關節炎導致髖關節磨損，手術後每天照射兩次。一個月後正常走路，四個月後逛街旅遊都沒有問題！", years: "使用 5 年" },
+    { name: "李先生", category: "過敏症狀", content: "黏膜過敏症狀完全消失，眼睛不再佈滿血絲，鼻涕倒流、痰多卡喉、呼吸困難全部改善，生活品質大幅提升。", years: "使用 4 年" },
+    { name: "吳女士", category: "美容代謝", content: "照射後頻繁排尿，左邊臉水腫消退，眼袋明顯變小。耳鳴改善，聽力變清楚，便秘、手麻、睡眠都有很大改善。", years: "使用 2 年" },
+    { name: "黃醫師", category: "醫療專業", content: "能量儀是人體自我療癒、自我免疫的啟動器，透過照射讓部位的真實狀況反射出光譜，透過神經傳遞到腦，腦再發動免疫、修復和療癒機制。", years: "臨床觀察 8 年" },
+    { name: "劉先生", category: "肝臟健康", content: "完成干擾素療程後，使用能量儀照射肝臟位置，紅色纖維化區塊慢慢消退。十多年後目前狀況穩定，皮膚很好，看起來比實際年齡年輕很多。", years: "使用 10 年" },
+  ];
+
+  let tIdx = 0;
+  let tTimer;
+
+  function renderTestimonial() {
+    const t = testimonials[tIdx];
+    document.getElementById('t-text').textContent = t.content;
+    document.getElementById('t-name').textContent = t.name;
+    document.getElementById('t-cat').textContent = t.category;
+    document.getElementById('t-years').textContent = t.years;
+    document.querySelectorAll('.dot').forEach((d, i) => {
+      d.classList.toggle('active', i === tIdx);
+    });
+  }
+
+  function buildDots() {
+    const container = document.getElementById('dots');
+    container.innerHTML = '';
+    testimonials.forEach((_, i) => {
+      const d = document.createElement('div');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.onclick = () => { tIdx = i; renderTestimonial(); resetTimer(); };
+      container.appendChild(d);
+    });
+  }
+
+  function prevT() { tIdx = (tIdx - 1 + testimonials.length) % testimonials.length; renderTestimonial(); resetTimer(); }
+  function nextT() { tIdx = (tIdx + 1) % testimonials.length; renderTestimonial(); resetTimer(); }
+
+  function resetTimer() {
+    clearInterval(tTimer);
+    tTimer = setInterval(() => { tIdx = (tIdx + 1) % testimonials.length; renderTestimonial(); }, 5000);
+  }
+
+  buildDots();
+  renderTestimonial();
+  resetTimer();
+
+  // ── Counter Animation ──
+  function countUp(el, target, suffix, duration) {
+    let start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      const progress = Math.min((ts - start) / duration, 1);
+      const val = Math.floor(progress * target);
+      el.innerHTML = val + '<span>' + suffix + '</span>';
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const statsEl = document.querySelector('.stats');
+  let statsAnimated = false;
+  const statsObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting && !statsAnimated) {
+      statsAnimated = true;
+      countUp(document.getElementById('s1'), 12, '年', 1800);
+      countUp(document.getElementById('s2'), 34, '份', 1800);
+      countUp(document.getElementById('s3'), 9, '公分', 1800);
+      countUp(document.getElementById('s4'), 46, '種', 1800);
+    }
+  }, { threshold: 0.3 });
+  statsObserver.observe(statsEl);
+
+  // ── Form Submit ──
+  function submitForm(e) {
+    e.preventDefault();
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+    e.target.reset();
+  }
+</script>
+</body>
+</html>
