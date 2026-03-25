@@ -476,134 +476,372 @@
     .quiz-loading-sub { font-size: 13px; color: #94a3b8; }
 
     /* ── HEALTH REPORT ── */
-    .health-report {
-      text-align: left;
-      animation: fadeInUp 0.4s ease;
+    /* 設計語言：曜石黑底色 + 奈米金點綴 + 玻璃擬態 + 科技微光 */
+    :root {
+      --rpt-bg: #070d1a;
+      --rpt-surface: rgba(255,255,255,0.05);
+      --rpt-border: rgba(201,162,39,0.25);
+      --rpt-gold: #c9a227;
+      --rpt-gold-light: #f0d060;
+      --rpt-gold-dim: rgba(201,162,39,0.15);
+      --rpt-blue: #1a8fe3;
+      --rpt-cyan: #0dd9c4;
+      --rpt-text: #e8eaf0;
+      --rpt-text-dim: rgba(232,234,240,0.55);
     }
+
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(16px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(201,162,39,0.3), 0 0 60px rgba(201,162,39,0.1); }
+      50% { box-shadow: 0 0 30px rgba(201,162,39,0.5), 0 0 80px rgba(201,162,39,0.2); }
+    }
+    @keyframes scanLine {
+      0% { transform: translateY(-100%); opacity: 0; }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.6; }
+      100% { transform: translateY(400%); opacity: 0; }
+    }
+    @keyframes rotateRing {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes countUp {
+      from { opacity: 0; transform: scale(0.5); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes particleDrift {
+      0% { transform: translateY(0) translateX(0); opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-40px) translateX(10px); opacity: 0; }
+    }
+
+    .health-report {
+      text-align: left;
+      animation: fadeInUp 0.5s ease;
+      background: var(--rpt-bg);
+      border-radius: 24px;
+      padding: 28px 20px 24px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--rpt-border);
+    }
+    /* 背景模擬深宇宙星光網格 */
+    .health-report::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 40% at 50% 0%, rgba(26,143,227,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 30% at 80% 80%, rgba(201,162,39,0.08) 0%, transparent 60%),
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.02) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.02) 40px);
+      pointer-events: none; z-index: 0;
+    }
+    .health-report > * { position: relative; z-index: 1; }
+
+    /* —— 報告頭部 —— */
     .report-header {
-      text-align: center; margin-bottom: 28px;
+      text-align: center;
+      margin-bottom: 32px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--rpt-border);
+      position: relative;
     }
-    .report-score-ring {
-      width: 110px; height: 110px; border-radius: 50%;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      margin: 0 auto 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    .report-header-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+      color: var(--rpt-gold); text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
     }
-    .report-score-ring .rsr-num { font-size: 38px; font-weight: 900; color: #fff; line-height: 1; }
-    .report-score-ring .rsr-label { font-size: 11px; color: rgba(255,255,255,0.85); }
-    .report-title { font-size: 21px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
-    .report-subtitle { font-size: 14px; color: #64748b; }
+    .report-header-label::before,
+    .report-header-label::after {
+      content: ''; flex: 1; max-width: 40px;
+      height: 1px; background: linear-gradient(90deg, transparent, var(--rpt-gold));
+    }
+    .report-header-label::after {
+      background: linear-gradient(90deg, var(--rpt-gold), transparent);
+    }
+
+    /* SVG 能量環 */
+    .report-score-wrap {
+      position: relative; width: 160px; height: 160px;
+      margin: 0 auto 20px;
+    }
+    .report-score-svg {
+      width: 160px; height: 160px;
+      transform: rotate(-90deg);
+    }
+    .rss-track {
+      fill: none; stroke: rgba(255,255,255,0.06);
+      stroke-width: 8;
+    }
+    .rss-progress {
+      fill: none; stroke-width: 8;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1.2s cubic-bezier(0.4,0,0.2,1);
+    }
+    .rss-outer-ring {
+      fill: none; stroke: var(--rpt-gold); stroke-width: 1;
+      opacity: 0.3;
+      animation: rotateRing 12s linear infinite;
+      transform-origin: center;
+    }
+    .report-score-inner {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+    }
+    .rsi-num {
+      font-size: 44px; font-weight: 900; line-height: 1;
+      background: linear-gradient(135deg, #fff 30%, var(--rpt-gold-light));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: countUp 0.6s 0.3s both;
+    }
+    .rsi-label {
+      font-size: 10px; letter-spacing: 0.12em;
+      color: var(--rpt-gold); text-transform: uppercase; margin-top: 2px;
+    }
+    /* 外圈小光點 */
+    .report-score-dots {
+      position: absolute; inset: -8px;
+      animation: rotateRing 20s linear infinite reverse;
+    }
+    .report-score-dots::before,
+    .report-score-dots::after {
+      content: ''; position: absolute;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--rpt-gold);
+      box-shadow: 0 0 8px var(--rpt-gold);
+    }
+    .report-score-dots::before { top: 0; left: 50%; transform: translateX(-50%); }
+    .report-score-dots::after { bottom: 0; left: 50%; transform: translateX(-50%); }
+
+    .report-title {
+      font-size: 22px; font-weight: 900; color: var(--rpt-text);
+      margin-bottom: 4px; letter-spacing: 0.02em;
+    }
+    .report-subtitle {
+      font-size: 13px; color: var(--rpt-text-dim);
+    }
     .report-name-badge {
-      display: inline-block; background: #f0f9ff; border: 1.5px solid #bae6fd;
-      color: #0369a1; font-weight: 700; padding: 4px 14px;
-      border-radius: 999px; font-size: 14px; margin-top: 8px;
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--rpt-gold-dim);
+      border: 1px solid var(--rpt-border);
+      color: var(--rpt-gold-light); font-weight: 700;
+      padding: 5px 16px; border-radius: 999px;
+      font-size: 13px; margin-top: 10px;
+      letter-spacing: 0.04em;
     }
-    /* 症狀卡片 */
+
+    /* —— 能量指標列 —— */
+    .report-metrics {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 10px; margin-bottom: 28px;
+    }
+    .report-metric-item {
+      background: var(--rpt-surface);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px; padding: 12px 8px;
+      text-align: center;
+    }
+    .rmi-icon { font-size: 22px; margin-bottom: 6px; }
+    .rmi-value {
+      font-size: 18px; font-weight: 900; color: var(--rpt-text);
+      line-height: 1;
+    }
+    .rmi-label {
+      font-size: 10px; color: var(--rpt-text-dim);
+      margin-top: 3px; letter-spacing: 0.05em;
+    }
+
+    /* —— 區塊標題 —— */
     .report-section-title {
-      font-size: 13px; font-weight: 700; color: #94a3b8;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      margin: 24px 0 12px;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 700; color: var(--rpt-gold);
+      letter-spacing: 0.15em; text-transform: uppercase;
+      margin: 28px 0 14px;
     }
+    .report-section-title::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, var(--rpt-border), transparent);
+    }
+
+    /* —— 症狀卡片 —— */
     .symptom-card {
       border-radius: 16px; overflow: hidden;
-      border: 1.5px solid #e2e8f0;
-      margin-bottom: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 10px;
+      background: var(--rpt-surface);
+      backdrop-filter: blur(12px);
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .symptom-card:hover {
+      border-color: rgba(201,162,39,0.3);
+      box-shadow: 0 4px 24px rgba(201,162,39,0.08);
+    }
+    .symptom-card.open {
+      border-color: rgba(201,162,39,0.4);
+      box-shadow: 0 4px 32px rgba(201,162,39,0.12);
     }
     .symptom-card-header {
       display: flex; align-items: center; justify-content: space-between;
       padding: 14px 16px; cursor: pointer;
-      background: #fff;
+      background: transparent;
       transition: background 0.2s;
     }
-    .symptom-card-header:hover { background: #f8fafc; }
+    .symptom-card-header:hover { background: rgba(255,255,255,0.03); }
     .symptom-card-header-left {
       display: flex; align-items: center; gap: 12px;
     }
     .symptom-icon {
-      width: 40px; height: 40px; border-radius: 12px;
+      width: 42px; height: 42px; border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
       font-size: 20px; flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.1);
     }
-    .symptom-name { font-size: 15px; font-weight: 700; color: #0f172a; }
+    .symptom-name {
+      font-size: 14px; font-weight: 700; color: var(--rpt-text);
+    }
     .symptom-tag {
-      font-size: 11px; font-weight: 600; padding: 3px 10px;
+      font-size: 10px; font-weight: 600; padding: 3px 10px;
       border-radius: 999px; flex-shrink: 0;
+      letter-spacing: 0.04em;
     }
     .symptom-chevron {
-      font-size: 12px; color: #94a3b8;
+      font-size: 10px; color: var(--rpt-gold);
       transition: transform 0.25s;
-      flex-shrink: 0; margin-left: 8px;
+      flex-shrink: 0; margin-left: 6px;
+      opacity: 0.7;
     }
-    .symptom-card.open .symptom-chevron { transform: rotate(180deg); }
+    .symptom-card.open .symptom-chevron { transform: rotate(180deg); opacity: 1; }
     .symptom-card-body {
       display: none; padding: 0 16px 16px;
-      background: #fff;
+      background: transparent;
+      animation: fadeInUp 0.2s ease;
     }
     .symptom-card.open .symptom-card-body { display: block; }
     .symptom-cause {
-      background: #f8fafc; border-radius: 12px;
-      padding: 14px 16px; margin-bottom: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 14px 16px; margin-bottom: 10px;
     }
     .symptom-cause-title {
-      font-size: 12px; font-weight: 700; color: #64748b;
-      margin-bottom: 8px; letter-spacing: 0.05em;
+      font-size: 10px; font-weight: 700; color: var(--rpt-text-dim);
+      margin-bottom: 8px; letter-spacing: 0.12em; text-transform: uppercase;
     }
     .symptom-cause-text {
-      font-size: 14px; color: #334155; line-height: 1.8;
+      font-size: 13px; color: var(--rpt-text-dim); line-height: 1.85;
     }
     .symptom-vigor {
-      background: linear-gradient(135deg, #f0f9ff, #f0fdf4);
-      border: 1.5px solid #bae6fd;
+      background: linear-gradient(135deg, rgba(26,143,227,0.12), rgba(13,217,196,0.08));
+      border: 1px solid rgba(26,143,227,0.25);
       border-radius: 12px; padding: 14px 16px;
+      position: relative; overflow: hidden;
+    }
+    /* 掃描線效果 */
+    .symptom-vigor::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--rpt-blue), var(--rpt-cyan), transparent);
+      background-size: 200% 100%;
+      animation: shimmer 2.5s linear infinite;
     }
     .symptom-vigor-title {
-      font-size: 12px; font-weight: 700; color: #0369a1;
-      margin-bottom: 8px; letter-spacing: 0.05em;
+      font-size: 10px; font-weight: 700;
+      color: var(--rpt-cyan);
+      margin-bottom: 8px; letter-spacing: 0.12em; text-transform: uppercase;
     }
     .symptom-vigor-text {
-      font-size: 14px; color: #0f172a; line-height: 1.8;
+      font-size: 13px; color: var(--rpt-text); line-height: 1.85;
     }
-    /* 建議行動 */
+
+    /* —— CTA 區塊 —— */
     .report-cta-box {
-      background: linear-gradient(135deg, #0ea5e9, #14b8a6);
-      border-radius: 20px; padding: 24px 20px;
-      text-align: center; margin-top: 24px;
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%);
+      border: 1px solid var(--rpt-border);
+      border-radius: 20px; padding: 28px 20px;
+      text-align: center; margin-top: 28px;
+      animation: pulseGlow 3s ease-in-out infinite;
     }
-    .report-cta-title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-    .report-cta-desc { font-size: 14px; color: rgba(255,255,255,0.9); line-height: 1.7; margin-bottom: 20px; }
+    .report-cta-box::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--rpt-gold), transparent);
+    }
+    .report-cta-box::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,162,39,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .report-cta-title {
+      font-size: 18px; font-weight: 900; color: var(--rpt-text);
+      margin-bottom: 8px; position: relative; z-index: 1;
+    }
+    .report-cta-title-gold {
+      background: linear-gradient(135deg, var(--rpt-gold), var(--rpt-gold-light));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .report-cta-desc {
+      font-size: 13px; color: var(--rpt-text-dim); line-height: 1.8;
+      margin-bottom: 22px; position: relative; z-index: 1;
+    }
     .report-cta-btn {
-      display: inline-block; background: #fff; color: #0369a1;
-      font-weight: 800; font-size: 15px;
-      padding: 12px 28px; border-radius: 12px;
+      display: inline-block; position: relative; z-index: 1;
+      background: linear-gradient(135deg, var(--rpt-gold), #e8b830, var(--rpt-gold));
+      background-size: 200% 100%;
+      color: #0a0f1a;
+      font-weight: 900; font-size: 15px;
+      padding: 14px 32px; border-radius: 14px;
       text-decoration: none; border: none; cursor: pointer;
       font-family: 'Noto Sans TC', sans-serif;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      transition: transform 0.2s, box-shadow 0.2s, background-position 0.4s;
+      box-shadow: 0 4px 20px rgba(201,162,39,0.4);
+      letter-spacing: 0.04em;
     }
-    .report-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+    .report-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(201,162,39,0.55);
+      background-position: right center;
+    }
     .report-share-row {
-      display: flex; gap: 10px; margin-top: 12px; justify-content: center;
+      display: flex; gap: 10px; margin-top: 14px; justify-content: center;
+      position: relative; z-index: 1;
     }
     .report-share-btn {
-      background: rgba(255,255,255,0.2); border: 1.5px solid rgba(255,255,255,0.4);
-      color: #fff; font-size: 13px; font-weight: 600;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--rpt-text-dim); font-size: 12px; font-weight: 600;
       padding: 8px 18px; border-radius: 10px;
       cursor: pointer; font-family: 'Noto Sans TC', sans-serif;
-      transition: background 0.2s;
+      transition: all 0.2s; letter-spacing: 0.04em;
     }
-    .report-share-btn:hover { background: rgba(255,255,255,0.3); }
-    /* 免責聲明 */
+    .report-share-btn:hover {
+      background: rgba(201,162,39,0.12);
+      border-color: var(--rpt-border);
+      color: var(--rpt-gold-light);
+    }
+
+    /* —— 免責聲明 —— */
     .report-disclaimer {
-      background: #f8fafc; border: 1px solid #e2e8f0;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 12px; padding: 14px 16px;
-      margin-top: 20px; font-size: 12px; color: #94a3b8; line-height: 1.8;
+      margin-top: 20px; font-size: 11px;
+      color: rgba(232,234,240,0.35); line-height: 1.9;
     }
-    .report-disclaimer strong { color: #64748b; }
+    .report-disclaimer strong { color: rgba(232,234,240,0.55); }
 
     /* ── EDUCATION VIDEOS ── */
     .education-section {
@@ -1567,27 +1805,51 @@
     const symptomCardsHTML = uniqueSymptoms.map((key, idx) => {
       const s = SYMPTOM_DB[key];
       if (!s) return '';
+      const iconBgMap = {
+        fatigue: 'rgba(245,158,11,0.15)',
+        sleep:   'rgba(139,92,246,0.15)',
+        pain:    'rgba(239,68,68,0.15)',
+        immune:  'rgba(16,185,129,0.15)',
+        emotion: 'rgba(99,102,241,0.15)',
+        recovery:'rgba(14,165,233,0.15)',
+      };
+      const tagBgMap = {
+        fatigue: 'rgba(245,158,11,0.2)',
+        sleep:   'rgba(139,92,246,0.2)',
+        pain:    'rgba(239,68,68,0.2)',
+        immune:  'rgba(16,185,129,0.2)',
+        emotion: 'rgba(99,102,241,0.2)',
+        recovery:'rgba(14,165,233,0.2)',
+      };
+      const tagClrMap = {
+        fatigue: '#fbbf24',
+        sleep:   '#c4b5fd',
+        pain:    '#fca5a5',
+        immune:  '#6ee7b7',
+        emotion: '#a5b4fc',
+        recovery:'#7dd3fc',
+      };
       return `
         <div class="symptom-card" id="sc-${idx}">
           <div class="symptom-card-header" onclick="toggleSymptomCard('sc-${idx}')">
             <div class="symptom-card-header-left">
-              <div class="symptom-icon" style="background:${s.iconBg}">${s.icon}</div>
+              <div class="symptom-icon" style="background:${iconBgMap[key] || 'rgba(255,255,255,0.08)'}">${s.icon}</div>
               <div>
                 <div class="symptom-name">${s.name}</div>
               </div>
             </div>
             <div style="display:flex;align-items:center;gap:6px;">
-              <span class="symptom-tag" style="background:${s.tagColor};color:${s.tagTextColor}">${s.tagText}</span>
-              <span class="symptom-chevron">▼</span>
+              <span class="symptom-tag" style="background:${tagBgMap[key]};color:${tagClrMap[key]}">${s.tagText}</span>
+              <span class="symptom-chevron">&#9660;</span>
             </div>
           </div>
           <div class="symptom-card-body">
             <div class="symptom-cause">
-              <div class="symptom-cause-title">🔬 細胞層面成因分析</div>
+              <div class="symptom-cause-title">&#128300; 細胞層面成因分析</div>
               <div class="symptom-cause-text">${s.cause}</div>
             </div>
             <div class="symptom-vigor">
-              <div class="symptom-vigor-title">⚡ VIGOR 頻譜能量對應方案</div>
+              <div class="symptom-vigor-title">&#9889; VIGOR 頻譜能量對應方案</div>
               <div class="symptom-vigor-text">${s.vigor}</div>
             </div>
           </div>
@@ -1595,36 +1857,86 @@
       `;
     }).join('');
 
+    // SVG 能量環參數
+    const maxScore = 12;
+    const pct = Math.min(score / maxScore, 1);
+    const r = 64; const circ = 2 * Math.PI * r;
+    const dash = circ * pct;
+    const gap  = circ - dash;
+    let ringColor, ringGlow;
+    if (score >= 8) {
+      ringColor = '#ef4444'; ringGlow = 'rgba(239,68,68,0.5)';
+    } else if (score >= 5) {
+      ringColor = '#f59e0b'; ringGlow = 'rgba(245,158,11,0.5)';
+    } else if (score >= 2) {
+      ringColor = '#1a8fe3'; ringGlow = 'rgba(26,143,227,0.5)';
+    } else {
+      ringColor = '#10b981'; ringGlow = 'rgba(16,185,129,0.5)';
+    }
+
+    // 能量指標列
+    const metricsHTML = [
+      { icon: '&#9889;', value: score + '/12', label: '能量指數' },
+      { icon: '&#128300;', value: uniqueSymptoms.length + ' 項', label: '症狀分析' },
+      { icon: '&#128197;', value: new Date().toLocaleDateString('zh-TW', {month:'numeric',day:'numeric'}), label: '檢測日期' },
+    ].map(m => `
+      <div class="report-metric-item">
+        <div class="rmi-icon">${m.icon}</div>
+        <div class="rmi-value">${m.value}</div>
+        <div class="rmi-label">${m.label}</div>
+      </div>
+    `).join('');
+
     // 第一張卡片預設展開
     const reportHTML = `
       <div class="health-report">
         <div class="report-header">
-          <div class="report-score-ring" style="background:${scoreColor}">
-            <div class="rsr-num">${score}</div>
-            <div class="rsr-label">能量指數</div>
+          <div class="report-header-label">VIGOR 健康檢測報告</div>
+
+          <div class="report-score-wrap">
+            <svg class="report-score-svg" viewBox="0 0 160 160">
+              <circle class="rss-outer-ring" cx="80" cy="80" r="76"
+                stroke-dasharray="4 8"
+                style="transform-origin:80px 80px"/>
+              <circle class="rss-track" cx="80" cy="80" r="64"/>
+              <circle class="rss-progress" cx="80" cy="80" r="64"
+                stroke="${ringColor}"
+                stroke-dasharray="${dash} ${gap}"
+                style="filter:drop-shadow(0 0 6px ${ringGlow})"/>
+            </svg>
+            <div class="report-score-inner">
+              <div class="rsi-num">${score}</div>
+              <div class="rsi-label">ENERGY INDEX</div>
+            </div>
+            <div class="report-score-dots"></div>
           </div>
+
           <div class="report-title">${scoreLabel}</div>
           <div class="report-subtitle">${name} 的個人化健康分析報告</div>
-          <div class="report-name-badge">📅 ${new Date().toLocaleDateString('zh-TW')} 生成</div>
+          <div class="report-name-badge">&#9679; ${new Date().toLocaleDateString('zh-TW')} 生成</div>
         </div>
 
-        <div class="report-section-title">🔍 您的主要健康議題分析</div>
+        <div class="report-metrics">${metricsHTML}</div>
+
+        <div class="report-section-title">&#9679; 您的主要健康議題分析</div>
         ${symptomCardsHTML}
 
         <div class="report-cta-box">
-          <div class="report-cta-title">${ctaTitle}</div>
+          <div class="report-cta-title">
+            <span class="report-cta-title-gold">${ctaTitle.replace(/[\u{1F000}-\u{1FFFF}]/gu, '').trim()}</span>
+          </div>
           <div class="report-cta-desc">${ctaDesc}</div>
           <button class="report-cta-btn" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">
-            預約免費居家體驗 →
+            預約免費居家體驗
           </button>
           <div class="report-share-row">
-            <button class="report-share-btn" onclick="shareReport('${name}', ${score}, '${scoreLabel}')">📱 分享報告</button>
-            <button class="report-share-btn" onclick="document.getElementById('education').scrollIntoView({behavior:'smooth'})">🎥 看衛教影片</button>
+            <button class="report-share-btn" onclick="shareReport('${name}', ${score}, '${scoreLabel}')">&#9679; 分享報告</button>
+            <button class="report-share-btn" onclick="document.getElementById('education').scrollIntoView({behavior:'smooth'})">&#9654; 看衛教影片</button>
           </div>
         </div>
 
         <div class="report-disclaimer">
-          <strong>ℹ️ 法規免責聲明：</strong>本報告依據您填寫的健康問卷自動生成，僅供個人健康參考，<strong>不構成任何醫療診斷、治療建議或醫療效能宣稱</strong>。VIGOR 多頻譜能量儀之效能宣稱須經主管機關核准。如您有任何健康病症痆慮，請談詢合格醫師或醫療專業人員。
+          <strong>法規免責聲明：</strong>本報告依據您填寫的健康問卷自動生成，僅供個人健康參考，<strong>不構成任何醫療診斷、治療建議或醫療效能宣稱</strong>。VIGOR 多頻譜能量儀之效能宣稱須經主管機關核准。如您有任何健康病症疑慮，請諮詢合格醫師或醫療專業人員。
         </div>
       </div>
     `;
