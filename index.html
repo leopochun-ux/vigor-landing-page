@@ -475,6 +475,136 @@
     .quiz-loading-text { font-size: 16px; color: #0369a1; font-weight: 600; }
     .quiz-loading-sub { font-size: 13px; color: #94a3b8; }
 
+    /* ── HEALTH REPORT ── */
+    .health-report {
+      text-align: left;
+      animation: fadeInUp 0.4s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .report-header {
+      text-align: center; margin-bottom: 28px;
+    }
+    .report-score-ring {
+      width: 110px; height: 110px; border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+    .report-score-ring .rsr-num { font-size: 38px; font-weight: 900; color: #fff; line-height: 1; }
+    .report-score-ring .rsr-label { font-size: 11px; color: rgba(255,255,255,0.85); }
+    .report-title { font-size: 21px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
+    .report-subtitle { font-size: 14px; color: #64748b; }
+    .report-name-badge {
+      display: inline-block; background: #f0f9ff; border: 1.5px solid #bae6fd;
+      color: #0369a1; font-weight: 700; padding: 4px 14px;
+      border-radius: 999px; font-size: 14px; margin-top: 8px;
+    }
+    /* 症狀卡片 */
+    .report-section-title {
+      font-size: 13px; font-weight: 700; color: #94a3b8;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin: 24px 0 12px;
+    }
+    .symptom-card {
+      border-radius: 16px; overflow: hidden;
+      border: 1.5px solid #e2e8f0;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .symptom-card-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 16px; cursor: pointer;
+      background: #fff;
+      transition: background 0.2s;
+    }
+    .symptom-card-header:hover { background: #f8fafc; }
+    .symptom-card-header-left {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .symptom-icon {
+      width: 40px; height: 40px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .symptom-name { font-size: 15px; font-weight: 700; color: #0f172a; }
+    .symptom-tag {
+      font-size: 11px; font-weight: 600; padding: 3px 10px;
+      border-radius: 999px; flex-shrink: 0;
+    }
+    .symptom-chevron {
+      font-size: 12px; color: #94a3b8;
+      transition: transform 0.25s;
+      flex-shrink: 0; margin-left: 8px;
+    }
+    .symptom-card.open .symptom-chevron { transform: rotate(180deg); }
+    .symptom-card-body {
+      display: none; padding: 0 16px 16px;
+      background: #fff;
+    }
+    .symptom-card.open .symptom-card-body { display: block; }
+    .symptom-cause {
+      background: #f8fafc; border-radius: 12px;
+      padding: 14px 16px; margin-bottom: 12px;
+    }
+    .symptom-cause-title {
+      font-size: 12px; font-weight: 700; color: #64748b;
+      margin-bottom: 8px; letter-spacing: 0.05em;
+    }
+    .symptom-cause-text {
+      font-size: 14px; color: #334155; line-height: 1.8;
+    }
+    .symptom-vigor {
+      background: linear-gradient(135deg, #f0f9ff, #f0fdf4);
+      border: 1.5px solid #bae6fd;
+      border-radius: 12px; padding: 14px 16px;
+    }
+    .symptom-vigor-title {
+      font-size: 12px; font-weight: 700; color: #0369a1;
+      margin-bottom: 8px; letter-spacing: 0.05em;
+    }
+    .symptom-vigor-text {
+      font-size: 14px; color: #0f172a; line-height: 1.8;
+    }
+    /* 建議行動 */
+    .report-cta-box {
+      background: linear-gradient(135deg, #0ea5e9, #14b8a6);
+      border-radius: 20px; padding: 24px 20px;
+      text-align: center; margin-top: 24px;
+    }
+    .report-cta-title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .report-cta-desc { font-size: 14px; color: rgba(255,255,255,0.9); line-height: 1.7; margin-bottom: 20px; }
+    .report-cta-btn {
+      display: inline-block; background: #fff; color: #0369a1;
+      font-weight: 800; font-size: 15px;
+      padding: 12px 28px; border-radius: 12px;
+      text-decoration: none; border: none; cursor: pointer;
+      font-family: 'Noto Sans TC', sans-serif;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    .report-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+    .report-share-row {
+      display: flex; gap: 10px; margin-top: 12px; justify-content: center;
+    }
+    .report-share-btn {
+      background: rgba(255,255,255,0.2); border: 1.5px solid rgba(255,255,255,0.4);
+      color: #fff; font-size: 13px; font-weight: 600;
+      padding: 8px 18px; border-radius: 10px;
+      cursor: pointer; font-family: 'Noto Sans TC', sans-serif;
+      transition: background 0.2s;
+    }
+    .report-share-btn:hover { background: rgba(255,255,255,0.3); }
+    /* 免責聲明 */
+    .report-disclaimer {
+      background: #f8fafc; border: 1px solid #e2e8f0;
+      border-radius: 12px; padding: 14px 16px;
+      margin-top: 20px; font-size: 12px; color: #94a3b8; line-height: 1.8;
+    }
+    .report-disclaimer strong { color: #64748b; }
+
     /* ── EDUCATION VIDEOS ── */
     .education-section {
       padding: 80px 24px;
@@ -1324,6 +1454,52 @@
     `;
   }
 
+  // 症狀內容知識庫
+  const SYMPTOM_DB = {
+    fatigue: {
+      icon: '💤', name: '深層疲勞與低能量',
+      tagText: '粒線體相關', tagColor: '#fef3c7', tagTextColor: '#92400e',
+      iconBg: '#fef9c3',
+      cause: '粒線體（細胞發電廠）功能衰退，ATP（細胞能量貨幣）產量下降。慢性壓力導致皮質醇長期偏高，抑制粒線體修復機制。活性氧自由基累積，損傷粒線體 DNA，造成細胞無法有效產生能量。即使睡滿 8 小時，也因粒線體修復不完全而持續感到疲想。',
+      vigor: 'VIGOR 40 種元素頻率中的「細胞能量共振頻率」能直接作用於粒線體，促進 ATP 合成酶的活性，協助恢復細胞電位平衡，從根本改善細胞能量不足的問題。'
+    },
+    sleep: {
+      icon: '🌙', name: '睡眠障礙與自律神經失調',
+      tagText: '自律神經相關', tagColor: '#ede9fe', tagTextColor: '#5b21b6',
+      iconBg: '#ede9fe',
+      cause: '交感神經長期過度活躍，副交感神經難以接管，導致皮質醇與褪黑激素節律錯亂。粒線體在深層睡眠期間負責修復受損細胞，若粒線體功能不足，修復不完全導致大腦持續發出「警戒」訊號，造成半夜驚醒。腦細胞中堆積功能損壞的「殭屍粒線體」，持續釋放發炎訊號。',
+      vigor: 'VIGOR 特定頻率共振可調節自律神經平衡，降低交感神經過度活躍狀態，協助皮質醇節律恢復正常，為深層睡眠創造更良好的細胞環境。'
+    },
+    pain: {
+      icon: '🦴', name: '慢性疼痛與肌肉酸痛',
+      tagText: '發炎與循環相關', tagColor: '#fee2e2', tagTextColor: '#991b1b',
+      iconBg: '#fee2e2',
+      cause: '自律神經失調導致肌肉長期緊纃，局部血液循環受阻。組織缺氧引發戒性發炎，發炎介質（如前列腺素）持續刺激痛覺神經。粒線體功能不足，受損細胞修復速度慢於損傷累積速度。神經系統對疼痛訊號的「敏感化」：長期疼痛使神經系統降低疼痛閾値。',
+      vigor: 'VIGOR 頻率共振原理：不同組織在不同病理狀態下有其特定頻率，精準頻率訊號傳入細胞後產生共振，有助於緩解局部發炎、促進血液循環，協助受損組織修復。'
+    },
+    immune: {
+      icon: '🛡️', name: '免疫力下降與慢性病',
+      tagText: '粒線體與免疫', tagColor: '#dcfce7', tagTextColor: '#166534',
+      iconBg: '#dcfce7',
+      cause: '粒線體損傷是自體免疫疾病的隱藏元匇：粒線體受損釋放的物質會被免疫系統誤判為「外來入侵者」，引發戒性發炎。慢性壓力、超加工食品、缺乏運動、睡眠混亂、環境毒素是粒線體損傷的五大元匇。NK 細胞（自然殺手細胞）活性下降，對病毒與異常細胞的監控能力減弱。',
+      vigor: '透過細胞能量共振恢復粒線體正常功能，減少「誤判」引發的戒性發炎，協助免疫系統恢復正常調節能力。'
+    },
+    emotion: {
+      icon: '🧠', name: '情緒與認知問題',
+      tagText: '神經傳導相關', tagColor: '#ede9fe', tagTextColor: '#5b21b6',
+      iconBg: '#faf5ff',
+      cause: '40 歲後壓力荷爾蒙增加加速神經老化。腦細胞粒線體功能衰退，神經傳導物質（血清素、多巴胺）合成效率下降。戒性發炎影響海馬迂（記憶中樞）的神經新生。皮質醇長期偏高直接損傷海馬迂細胞。',
+      vigor: 'VIGOR 特定頻率共振協助調節自律神經平衡，降低皮質醇對腦細胞的損傷，支持神經傳導物質的正常合成環境。'
+    },
+    recovery: {
+      icon: '🏥', name: '术後或重病後恢復緩慢',
+      tagText: '細胞修復相關', tagColor: '#e0f2fe', tagTextColor: '#0369a1',
+      iconBg: '#e0f2fe',
+      cause: '手術或重病後，大量細胞需要修復，對 ATP 需求急劇上升。麻醉藥物、抗生素等可能暫時抑制粒線體功能。身體處於高度氧化壓力狀態，自由基大量產生。免疫系統過度動員後的「疲慣期」。',
+      vigor: 'VIGOR 在細胞層面提供額外的能量共振支持，協助加速粒線體恢復正常功能，為术後修復提供更充足的細胞能量環境。'
+    },
+  };
+
   function quizSubmitLead() {
     const name = document.getElementById('quiz-name').value.trim();
     const phone = document.getElementById('quiz-phone').value.trim();
@@ -1331,16 +1507,150 @@
       alert('請填寫姓名和手機號碼');
       return;
     }
-    document.getElementById('quiz-content').innerHTML = `
-      <div style="text-align:center;padding:40px 0;">
-        <div style="font-size:56px;margin-bottom:16px;">✅</div>
-        <div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:8px;">報告已發送！</div>
-        <p style="color:#64748b;line-height:1.8;">感謝您的信任！<br>我們的健康顧問將在 <strong>24 小時內</strong>與您聯絡，<br>為您安排免費居家體驗服務。</p>
-        <a href="#education" class="btn-primary" style="margin-top:24px;display:inline-flex;">繼續瀏覽衛教影片 →</a>
+
+    // 根據問卷答案判斷症狀
+    const symptoms = [];
+    // Q1: 疲勞程度 (score >= 2 表示有疲勞問題)
+    if (quizAnswers[0] !== null && quizAnswers[0] >= 2) symptoms.push('fatigue');
+    // Q2: 睡眠問題 (score >= 1)
+    if (quizAnswers[1] !== null && quizAnswers[1] >= 1) symptoms.push('sleep');
+    // Q3: 複選症狀
+    if (quizMultiAnswers[2].includes(0)) symptoms.push('pain');   // 關節疼痛
+    if (quizMultiAnswers[2].includes(2)) symptoms.push('immune'); // 慢性病
+    if (quizMultiAnswers[2].includes(3)) symptoms.push('emotion'); // 焦慮情緒
+    // Q5: 關心議題
+    const concern = quizAnswers[4];
+    if (concern === 0 && !symptoms.includes('sleep') && !symptoms.includes('fatigue')) {
+      symptoms.push('fatigue'); symptoms.push('sleep');
+    }
+    if (concern === 1 && !symptoms.includes('pain')) symptoms.push('pain');
+    if (concern === 2 && !symptoms.includes('immune')) symptoms.push('immune');
+
+    // 至少展示 2 個症狀
+    if (symptoms.length === 0) symptoms.push('fatigue', 'sleep');
+    if (symptoms.length === 1) {
+      const extras = ['fatigue','sleep','pain','immune','emotion'].filter(s => !symptoms.includes(s));
+      symptoms.push(extras[0]);
+    }
+    // 去重
+    const uniqueSymptoms = [...new Set(symptoms)].slice(0, 4);
+
+    // 重新計算能量分數
+    let score = 0;
+    quizQuestions.forEach((q, i) => {
+      if (q.type === 'multi') {
+        quizMultiAnswers[i].forEach(idx => { score += q.options[idx].score; });
+      } else if (quizAnswers[i] !== null) {
+        score += q.options[quizAnswers[i]].score;
+      }
+    });
+
+    let scoreColor, scoreLabel, ctaTitle, ctaDesc;
+    if (score >= 8) {
+      scoreColor = 'linear-gradient(135deg, #ef4444, #dc2626)';
+      scoreLabel = '嚴重能量缺口';
+      ctaTitle = '🚨 建議盡早安排專業評估';
+      ctaDesc = '您的細胞能量狀態需要立即關注。我們的健康顧問將為您進行深度評估，制定個人化改善方案。';
+    } else if (score >= 5) {
+      scoreColor = 'linear-gradient(135deg, #f59e0b, #d97706)';
+      scoreLabel = '中度能量失衡';
+      ctaTitle = '💡 了解您的個人化改善方案';
+      ctaDesc = '您的身體已出現能量失衡的警訊訊號。透過適當的頻譜能量調理，可以有效改善疲勞、睡眠與免疫力。';
+    } else {
+      scoreColor = 'linear-gradient(135deg, #0ea5e9, #14b8a6)';
+      scoreLabel = '輕度能量不足';
+      ctaTitle = '🌱 預防性健康管理方案';
+      ctaDesc = '您目前健康狀態尚可，但身體已發出輕度的能量不足信號。預防性的能量調理可以幫助您維持最佳狀態。';
+    }
+
+    // 生成症狀卡片 HTML
+    const symptomCardsHTML = uniqueSymptoms.map((key, idx) => {
+      const s = SYMPTOM_DB[key];
+      if (!s) return '';
+      return `
+        <div class="symptom-card" id="sc-${idx}">
+          <div class="symptom-card-header" onclick="toggleSymptomCard('sc-${idx}')">
+            <div class="symptom-card-header-left">
+              <div class="symptom-icon" style="background:${s.iconBg}">${s.icon}</div>
+              <div>
+                <div class="symptom-name">${s.name}</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <span class="symptom-tag" style="background:${s.tagColor};color:${s.tagTextColor}">${s.tagText}</span>
+              <span class="symptom-chevron">▼</span>
+            </div>
+          </div>
+          <div class="symptom-card-body">
+            <div class="symptom-cause">
+              <div class="symptom-cause-title">🔬 細胞層面成因分析</div>
+              <div class="symptom-cause-text">${s.cause}</div>
+            </div>
+            <div class="symptom-vigor">
+              <div class="symptom-vigor-title">⚡ VIGOR 頻譜能量對應方案</div>
+              <div class="symptom-vigor-text">${s.vigor}</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // 第一張卡片預設展開
+    const reportHTML = `
+      <div class="health-report">
+        <div class="report-header">
+          <div class="report-score-ring" style="background:${scoreColor}">
+            <div class="rsr-num">${score}</div>
+            <div class="rsr-label">能量指數</div>
+          </div>
+          <div class="report-title">${scoreLabel}</div>
+          <div class="report-subtitle">${name} 的個人化健康分析報告</div>
+          <div class="report-name-badge">📅 ${new Date().toLocaleDateString('zh-TW')} 生成</div>
+        </div>
+
+        <div class="report-section-title">🔍 您的主要健康議題分析</div>
+        ${symptomCardsHTML}
+
+        <div class="report-cta-box">
+          <div class="report-cta-title">${ctaTitle}</div>
+          <div class="report-cta-desc">${ctaDesc}</div>
+          <button class="report-cta-btn" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">
+            預約免費居家體驗 →
+          </button>
+          <div class="report-share-row">
+            <button class="report-share-btn" onclick="shareReport('${name}', ${score}, '${scoreLabel}')">📱 分享報告</button>
+            <button class="report-share-btn" onclick="document.getElementById('education').scrollIntoView({behavior:'smooth'})">🎥 看衛教影片</button>
+          </div>
+        </div>
+
+        <div class="report-disclaimer">
+          <strong>ℹ️ 法規免責聲明：</strong>本報告依據您填寫的健康問卷自動生成，僅供個人健康參考，<strong>不構成任何醫療診斷、治療建議或醫療效能宣稱</strong>。VIGOR 多頻譜能量儀之效能宣稱須經主管機關核准。如您有任何健康病症痆慮，請談詢合格醫師或醫療專業人員。
+        </div>
       </div>
     `;
+
+    document.getElementById('quiz-content').innerHTML = reportHTML;
     document.getElementById('quiz-progress-wrap').style.display = 'none';
     document.getElementById('quiz-nav').style.display = 'none';
+
+    // 預設展開第一張卡片
+    const firstCard = document.getElementById('sc-0');
+    if (firstCard) firstCard.classList.add('open');
+  }
+
+  function toggleSymptomCard(id) {
+    const card = document.getElementById(id);
+    if (card) card.classList.toggle('open');
+  }
+
+  function shareReport(name, score, label) {
+    const text = `我刚完成了 VIGOR 細胞能量健康檢測！我的能量指數是 ${score} 分（${label}）。你也來測測看看吧！`;
+    if (navigator.share) {
+      navigator.share({ title: 'VIGOR 健康檢測報告', text: text, url: window.location.href });
+    } else {
+      navigator.clipboard.writeText(text + ' ' + window.location.href);
+      alert('報告內容已複製，可以貼上分享！');
+    }
   }
 
   // 初始化問卷
