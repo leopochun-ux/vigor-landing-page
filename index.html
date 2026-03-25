@@ -352,6 +352,238 @@
     @media (max-width: 900px) { .usage-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 480px) { .usage-grid { grid-template-columns: 1fr; } }
 
+    /* ── HEALTH QUIZ ── */
+    .quiz-section {
+      padding: 80px 24px;
+      background: linear-gradient(135deg, #f0f9ff 0%, #f0fdfa 100%);
+    }
+    .quiz-container {
+      max-width: 760px; margin: 0 auto;
+    }
+    .quiz-progress-wrap {
+      margin-bottom: 32px;
+    }
+    .quiz-progress-label {
+      display: flex; justify-content: space-between;
+      font-size: 13px; color: #64748b; margin-bottom: 8px;
+    }
+    .quiz-progress-bar {
+      height: 6px; background: #e2e8f0; border-radius: 999px; overflow: hidden;
+    }
+    .quiz-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #0ea5e9, #14b8a6);
+      border-radius: 999px;
+      transition: width 0.5s ease;
+    }
+    .quiz-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 8px 40px rgba(14,165,233,0.12);
+      border: 1px solid #bae6fd;
+      min-height: 320px;
+    }
+    .quiz-question {
+      font-size: 20px; font-weight: 700; color: #0f172a;
+      margin-bottom: 8px; line-height: 1.5;
+    }
+    .quiz-hint {
+      font-size: 13px; color: #94a3b8; margin-bottom: 28px;
+    }
+    .quiz-options {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .quiz-option {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 20px; border-radius: 14px;
+      border: 2px solid #e2e8f0; background: #f8fafc;
+      cursor: pointer; transition: all 0.2s;
+      font-size: 15px; color: #334155; font-weight: 500;
+      font-family: 'Noto Sans TC', sans-serif;
+      text-align: left;
+    }
+    .quiz-option:hover {
+      border-color: #7dd3fc; background: #f0f9ff;
+    }
+    .quiz-option.selected {
+      border-color: #0ea5e9; background: #e0f2fe; color: #0369a1;
+    }
+    .quiz-option-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: #e0f2fe; display: flex; align-items: center;
+      justify-content: center; font-size: 18px; flex-shrink: 0;
+    }
+    .quiz-option.selected .quiz-option-icon { background: #bae6fd; }
+    .quiz-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 32px;
+    }
+    .quiz-btn-back {
+      background: none; border: 1.5px solid #e2e8f0;
+      color: #64748b; padding: 10px 24px; border-radius: 10px;
+      cursor: pointer; font-size: 14px; font-family: 'Noto Sans TC', sans-serif;
+      transition: all 0.2s;
+    }
+    .quiz-btn-back:hover { border-color: #94a3b8; color: #334155; }
+    .quiz-btn-next {
+      background: linear-gradient(135deg, #0ea5e9, #14b8a6);
+      color: #fff; padding: 12px 32px; border-radius: 12px;
+      border: none; cursor: pointer; font-size: 15px; font-weight: 700;
+      font-family: 'Noto Sans TC', sans-serif;
+      box-shadow: 0 4px 14px rgba(14,165,233,0.35);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .quiz-btn-next:hover { opacity: 0.9; transform: translateY(-1px); }
+    .quiz-btn-next:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+    /* 結果卡片 */
+    .quiz-result {
+      text-align: center;
+    }
+    .quiz-result-score {
+      width: 120px; height: 120px; border-radius: 50%;
+      background: linear-gradient(135deg, #0ea5e9, #14b8a6);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      box-shadow: 0 8px 32px rgba(14,165,233,0.3);
+    }
+    .quiz-result-score .score-num { font-size: 40px; font-weight: 900; color: #fff; line-height: 1; }
+    .quiz-result-score .score-label { font-size: 12px; color: rgba(255,255,255,0.8); }
+    .quiz-result-title { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
+    .quiz-result-desc { color: #64748b; line-height: 1.8; margin-bottom: 28px; font-size: 15px; }
+    .quiz-lead-form { text-align: left; }
+    .quiz-lead-form .form-group { margin-bottom: 14px; }
+    /* 名單擷取 */
+    .quiz-lead-title {
+      font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 6px;
+    }
+    .quiz-lead-sub {
+      font-size: 13px; color: #64748b; margin-bottom: 20px;
+    }
+    /* Loading */
+    .quiz-loading {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; padding: 40px 0; gap: 20px;
+    }
+    .quiz-spinner {
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 4px solid #e0f2fe;
+      border-top-color: #0ea5e9;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .quiz-loading-text { font-size: 16px; color: #0369a1; font-weight: 600; }
+    .quiz-loading-sub { font-size: 13px; color: #94a3b8; }
+
+    /* ── EDUCATION VIDEOS ── */
+    .education-section {
+      padding: 80px 24px;
+      background: #fff;
+    }
+    .education-tabs {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      justify-content: center; margin-bottom: 40px;
+    }
+    .edu-tab {
+      padding: 8px 20px; border-radius: 999px;
+      border: 1.5px solid #e2e8f0; background: #f8fafc;
+      font-size: 13px; font-weight: 500; color: #64748b;
+      cursor: pointer; transition: all 0.2s;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+    .edu-tab:hover { border-color: #7dd3fc; color: #0369a1; }
+    .edu-tab.active {
+      border-color: #0ea5e9; background: #e0f2fe; color: #0369a1;
+    }
+    .education-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    @media (max-width: 900px) { .education-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .education-grid { grid-template-columns: 1fr; } }
+    .edu-card {
+      border-radius: 20px; overflow: hidden;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+      background: #fff;
+      cursor: pointer;
+    }
+    .edu-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(14,165,233,0.15); }
+    .edu-thumb {
+      position: relative; padding-top: 56.25%; background: #f0f9ff;
+      overflow: hidden;
+    }
+    .edu-thumb-inner {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #dbeafe, #ccfbf1);
+    }
+    .edu-play-btn {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(255,255,255,0.9);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      transition: transform 0.2s;
+    }
+    .edu-card:hover .edu-play-btn { transform: scale(1.1); }
+    .edu-thumb-label {
+      position: absolute; top: 12px; left: 12px;
+      background: rgba(14,165,233,0.9); color: #fff;
+      font-size: 11px; font-weight: 600; padding: 4px 10px;
+      border-radius: 999px;
+    }
+    .edu-duration {
+      position: absolute; bottom: 10px; right: 12px;
+      background: rgba(0,0,0,0.6); color: #fff;
+      font-size: 11px; padding: 3px 8px; border-radius: 6px;
+    }
+    .edu-body { padding: 18px 20px; }
+    .edu-title { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 6px; line-height: 1.4; }
+    .edu-desc { font-size: 13px; color: #64748b; line-height: 1.6; }
+    /* Video Modal */
+    .video-modal {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.85); align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .video-modal.open { display: flex; }
+    .video-modal-inner {
+      width: 100%; max-width: 860px;
+      background: #0f172a; border-radius: 20px; overflow: hidden;
+      position: relative;
+    }
+    .video-modal-close {
+      position: absolute; top: 14px; right: 14px; z-index: 10;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.15); border: none;
+      color: #fff; font-size: 18px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .video-modal-close:hover { background: rgba(255,255,255,0.25); }
+    .video-modal-title {
+      padding: 20px 24px 12px; color: #fff; font-weight: 700; font-size: 16px;
+    }
+    .video-modal-embed {
+      position: relative; padding-top: 56.25%;
+    }
+    .video-modal-embed iframe {
+      position: absolute; inset: 0; width: 100%; height: 100%; border: none;
+    }
+    .video-modal-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #0f172a, #1e3a5f);
+      color: rgba(255,255,255,0.7); gap: 16px;
+    }
+    .video-modal-placeholder .play-icon {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: rgba(14,165,233,0.3); border: 2px solid rgba(14,165,233,0.5);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px;
+    }
+
     /* ── PRICING ── */
     .pricing-bg {
       background: linear-gradient(135deg, #0ea5e9, #14b8a6, #10b981);
@@ -478,6 +710,8 @@
     </a>
     <div class="nav-links">
       <a href="#features">產品特色</a>
+      <a href="#health-quiz">健康檢測</a>
+      <a href="#education">衛教影片</a>
       <a href="#testimonials">客戶見證</a>
       <a href="#contact">聯絡我們</a>
       <a href="#contact" class="btn-primary">預約體驗 →</a>
@@ -722,6 +956,79 @@
   </div>
 </section>
 
+<!-- HEALTH QUIZ -->
+<section class="quiz-section" id="health-quiz">
+  <div class="quiz-container">
+    <div class="section-header" style="max-width:760px;margin:0 auto 40px;">
+      <div class="section-badge" style="background:#e0f2fe;color:#0369a1;">健康自我檢測</div>
+      <h2>測測您的<span class="gradient-text">細胞能量狀態</span></h2>
+      <p class="section-desc">只需 2 分鐘，透過 5 個問題了解您目前的身體能量缺口，並獲得個人化健康建議</p>
+    </div>
+
+    <!-- 進度條 -->
+    <div class="quiz-progress-wrap" id="quiz-progress-wrap">
+      <div class="quiz-progress-label">
+        <span id="quiz-step-label">第 1 題，共 5 題</span>
+        <span id="quiz-pct-label">20%</span>
+      </div>
+      <div class="quiz-progress-bar">
+        <div class="quiz-progress-fill" id="quiz-progress-fill" style="width:20%"></div>
+      </div>
+    </div>
+
+    <!-- 問卷卡片 -->
+    <div class="quiz-card" id="quiz-card">
+      <!-- 問題區（由 JS 動態渲染）-->
+      <div id="quiz-content"></div>
+
+      <!-- 導航按鈕 -->
+      <div class="quiz-nav" id="quiz-nav">
+        <button class="quiz-btn-back" id="quiz-btn-back" onclick="quizBack()" style="visibility:hidden">← 上一題</button>
+        <button class="quiz-btn-next" id="quiz-btn-next" onclick="quizNext()" disabled>下一題 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION VIDEOS -->
+<section class="education-section" id="education">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-badge" style="background:#f0fdf4;color:#15803d;">衛教知識</div>
+      <h2>了解您的身體，<span class="gradient-text">從知識開始</span></h2>
+      <p class="section-desc">由布蘭德博士與專業醫師團隊錄製，深入淺出解說細胞能量、頻譜療癒與各類健康議題</p>
+    </div>
+
+    <!-- 分類標籤 -->
+    <div class="education-tabs">
+      <button class="edu-tab active" onclick="filterEdu('all', this)">全部</button>
+      <button class="edu-tab" onclick="filterEdu('science', this)">科學原理</button>
+      <button class="edu-tab" onclick="filterEdu('sleep', this)">睡眠改善</button>
+      <button class="edu-tab" onclick="filterEdu('chronic', this)">慢性病管理</button>
+      <button class="edu-tab" onclick="filterEdu('immune', this)">免疫提升</button>
+      <button class="edu-tab" onclick="filterEdu('recovery', this)">術後恢復</button>
+    </div>
+
+    <!-- 影片卡片網格 -->
+    <div class="education-grid" id="edu-grid"></div>
+  </div>
+</section>
+
+<!-- Video Modal -->
+<div class="video-modal" id="video-modal" onclick="closeVideoModal(event)">
+  <div class="video-modal-inner">
+    <button class="video-modal-close" onclick="closeVideoModal()">✕</button>
+    <div class="video-modal-title" id="modal-title"></div>
+    <div class="video-modal-embed">
+      <div class="video-modal-placeholder" id="modal-placeholder">
+        <div class="play-icon">▷</div>
+        <p id="modal-video-desc" style="font-size:14px;text-align:center;max-width:320px;"></p>
+        <a id="modal-cta" href="#contact" onclick="closeVideoModal()" class="btn-primary" style="margin-top:8px;">預約免費體驗 →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- PRICING -->
 <div class="pricing-bg">
   <div class="pricing-inner">
@@ -820,6 +1127,324 @@
 <div id="toast">✅ 預約申請已送出！我們將在 24 小時內與您聯繫。</div>
 
 <script>
+  // ── HEALTH QUIZ ──
+  const quizQuestions = [
+    {
+      q: '您最常感到疲勞的情況是？',
+      hint: '可選擇最符合您目前狀況的選項',
+      type: 'single',
+      options: [
+        { icon: '☀️', text: '小睡後依然精神滞溛，充滿活力', score: 0 },
+        { icon: '😴', text: '小睡起來尚可，下午會有點倒欲睡', score: 1 },
+        { icon: '😫', text: '常常感到疲想，就算睡够了還是沒精神', score: 2 },
+        { icon: '😵', text: '全身持續疲想，小睡也無法恢復體力', score: 3 },
+      ]
+    },
+    {
+      q: '您的睡眠品質如何？',
+      hint: '請根據最近一個月的狀況作答',
+      type: 'single',
+      options: [
+        { icon: '🌙', text: '入睡容易，一覚到天亮，睡眠質量良好', score: 0 },
+        { icon: '🕐', text: '偶爾失眠或早醒，但大致尚可', score: 1 },
+        { icon: '😪', text: '常常失眠或早醒，白天精神不溛', score: 2 },
+        { icon: '😵', text: '嚴重失眠，需要藥物輔助才能入睡', score: 3 },
+      ]
+    },
+    {
+      q: '您目前是否有以下身體狀況？',
+      hint: '可復選，選擇所有符合的項目',
+      type: 'multi',
+      options: [
+        { icon: '🦴', text: '關節疼痛或肌肉酸痛', score: 1 },
+        { icon: '🤧', text: '鼻子過敏、易打器子或皮膚問題', score: 1 },
+        { icon: '💔', text: '慢性病（高血壓、糖尿病、心血管問題）', score: 2 },
+        { icon: '🧠', text: '容易焦慮、情緒起伏不定', score: 1 },
+        { icon: '✅', text: '以上狀況我都沒有', score: 0 },
+      ]
+    },
+    {
+      q: '您對目前的健康狀態滿意度如何？',
+      hint: '請誠實作答，這有助於我們為您提供最準確的建議',
+      type: 'single',
+      options: [
+        { icon: '😄', text: '非常滿意，健康狀態良好', score: 0 },
+        { icon: '🙂', text: '尚可，但希望能再進一步改善', score: 1 },
+        { icon: '😐', text: '不太滿意，有些地方需要改善', score: 2 },
+        { icon: '😟', text: '很不滿意，辫切希望改變', score: 3 },
+      ]
+    },
+    {
+      q: '您對哪類健康議題最关心？',
+      hint: '選擇您最希望改善的項目',
+      type: 'single',
+      options: [
+        { icon: '😴', text: '睡眠品質與疲勞改善', score: 1 },
+        { icon: '🦴', text: '疼痛管理與行動力提升', score: 1 },
+        { icon: '💧', text: '免疫力與慢性病調理', score: 1 },
+        { icon: '✨', text: '整體活力與生活品質提升', score: 1 },
+      ]
+    },
+  ];
+
+  let quizStep = 0;
+  let quizAnswers = Array(quizQuestions.length).fill(null);
+  let quizMultiAnswers = Array(quizQuestions.length).fill(null).map(() => []);
+
+  function quizRender() {
+    const q = quizQuestions[quizStep];
+    const isMulti = q.type === 'multi';
+    const selected = isMulti ? quizMultiAnswers[quizStep] : [quizAnswers[quizStep]];
+
+    document.getElementById('quiz-step-label').textContent = `第 ${quizStep + 1} 題，共 ${quizQuestions.length} 題`;
+    const pct = Math.round(((quizStep + 1) / quizQuestions.length) * 100);
+    document.getElementById('quiz-pct-label').textContent = pct + '%';
+    document.getElementById('quiz-progress-fill').style.width = pct + '%';
+
+    document.getElementById('quiz-btn-back').style.visibility = quizStep === 0 ? 'hidden' : 'visible';
+
+    const hasAnswer = isMulti ? quizMultiAnswers[quizStep].length > 0 : quizAnswers[quizStep] !== null;
+    document.getElementById('quiz-btn-next').disabled = !hasAnswer;
+    document.getElementById('quiz-btn-next').textContent = quizStep === quizQuestions.length - 1 ? '查看我的健康報告 →' : '下一題 →';
+
+    document.getElementById('quiz-content').innerHTML = `
+      <div class="quiz-question">${q.q}</div>
+      <div class="quiz-hint">${isMulti ? '📌 可復選' : '📌 單選'} · ${q.hint}</div>
+      <div class="quiz-options">
+        ${q.options.map((opt, i) => `
+          <button class="quiz-option ${selected.includes(i) ? 'selected' : ''}" onclick="quizSelect(${i})">
+            <div class="quiz-option-icon">${opt.icon}</div>
+            <span>${opt.text}</span>
+          </button>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  function quizSelect(idx) {
+    const q = quizQuestions[quizStep];
+    if (q.type === 'multi') {
+      const arr = quizMultiAnswers[quizStep];
+      const pos = arr.indexOf(idx);
+      if (pos === -1) arr.push(idx);
+      else arr.splice(pos, 1);
+    } else {
+      quizAnswers[quizStep] = idx;
+    }
+    quizRender();
+  }
+
+  function quizNext() {
+    if (quizStep < quizQuestions.length - 1) {
+      quizStep++;
+      quizRender();
+    } else {
+      quizShowLoading();
+    }
+  }
+
+  function quizBack() {
+    if (quizStep > 0) { quizStep--; quizRender(); }
+  }
+
+  function quizShowLoading() {
+    document.getElementById('quiz-progress-wrap').style.display = 'none';
+    document.getElementById('quiz-nav').style.display = 'none';
+    document.getElementById('quiz-content').innerHTML = `
+      <div class="quiz-loading">
+        <div class="quiz-spinner"></div>
+        <div class="quiz-loading-text">正在分析您的健康數據...</div>
+        <div class="quiz-loading-sub">正在計算細胞能量指數，請稍候</div>
+      </div>
+    `;
+    setTimeout(quizShowResult, 2000);
+  }
+
+  function quizShowResult() {
+    // 計算能量分數
+    let score = 0;
+    quizQuestions.forEach((q, i) => {
+      if (q.type === 'multi') {
+        quizMultiAnswers[i].forEach(idx => { score += q.options[idx].score; });
+      } else if (quizAnswers[i] !== null) {
+        score += q.options[quizAnswers[i]].score;
+      }
+    });
+
+    let level, desc, color, suggestion;
+    if (score >= 8) {
+      level = '嚴重能量缺口'; color = '#ef4444';
+      desc = '您的細胞能量狀態顯示明顯不足，身體的自我療癒機制可能已受到影響。建議盡早安排專業顧問詢詢，了解非藥物的深層調理方案。';
+      suggestion = '建議預約免費體驗，專業顧問將為您訂製個人化療癒方案';
+    } else if (score >= 5) {
+      level = '中度能量失衡'; color = '#f59e0b';
+      desc = '您的身體已出現能量失衡的警訊訊號。透過適當的頻譜能量調理，可以有效改善疲勞、睡眠與免疫力。';
+      suggestion = '建議了解 VIGOR 的居家療癒方案，先體驗再決定';
+    } else if (score >= 2) {
+      level = '輕度能量不足'; color = '#0ea5e9';
+      desc = '您的健康狀態尚可，但已有身體發出輕度的能量不足信號。預防性的能量調理可以幫助您維持最佳狀態。';
+      suggestion = '點擊了解如何預防能量衰退，並預約免費體驗';
+    } else {
+      level = '能量狀態良好'; color = '#10b981';
+      desc = '恭喜您！您目前的健康狀態良好。繼續維持良好的生活習慣，并了解如何預防能量衰退。';
+      suggestion = '了解預防性健康管理方案';
+    }
+
+    document.getElementById('quiz-progress-wrap').style.display = 'none';
+    document.getElementById('quiz-nav').style.display = 'none';
+    document.getElementById('quiz-content').innerHTML = `
+      <div class="quiz-result">
+        <div class="quiz-result-score" style="background:linear-gradient(135deg, ${color}, ${color}cc)">
+          <div class="score-num">${score}</div>
+          <div class="score-label">能量指數</div>
+        </div>
+        <div class="quiz-result-title">${level}</div>
+        <div class="quiz-result-desc">${desc}</div>
+        <div class="quiz-lead-form">
+          <div class="quiz-lead-title">🎁 獲取您的個人化健康報告</div>
+          <div class="quiz-lead-sub">留下聯絡方式，我們的健康顧問將在 24 小時內為您提供詳細建議與免費體驗安排</div>
+          <div class="form-group">
+            <label class="form-label">您的姓名</label>
+            <input type="text" class="form-input" id="quiz-name" placeholder="請輸入姓名" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">聯絡手機</label>
+            <input type="tel" class="form-input" id="quiz-phone" placeholder="請輸入手機號碼" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Line ID（選填）</label>
+            <input type="text" class="form-input" id="quiz-line" placeholder="方便我們透過 Line 與您聯絡" />
+          </div>
+          <button class="quiz-btn-next" style="width:100%;padding:14px;font-size:16px;" onclick="quizSubmitLead()">
+            獲取健康報告 + 預約免費體驗 →
+          </button>
+          <p style="font-size:12px;color:#94a3b8;text-align:center;margin-top:10px;">我們尊重您的隱私，資料僅用於健康訮詢之用途</p>
+        </div>
+      </div>
+    `;
+  }
+
+  function quizSubmitLead() {
+    const name = document.getElementById('quiz-name').value.trim();
+    const phone = document.getElementById('quiz-phone').value.trim();
+    if (!name || !phone) {
+      alert('請填寫姓名和手機號碼');
+      return;
+    }
+    document.getElementById('quiz-content').innerHTML = `
+      <div style="text-align:center;padding:40px 0;">
+        <div style="font-size:56px;margin-bottom:16px;">✅</div>
+        <div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:8px;">報告已發送！</div>
+        <p style="color:#64748b;line-height:1.8;">感謝您的信任！<br>我們的健康顧問將在 <strong>24 小時內</strong>與您聯絡，<br>為您安排免費居家體驗服務。</p>
+        <a href="#education" class="btn-primary" style="margin-top:24px;display:inline-flex;">繼續瀏覽衛教影片 →</a>
+      </div>
+    `;
+    document.getElementById('quiz-progress-wrap').style.display = 'none';
+    document.getElementById('quiz-nav').style.display = 'none';
+  }
+
+  // 初始化問卷
+  quizRender();
+
+  // ── EDUCATION VIDEOS ──
+  const eduVideos = [
+    {
+      id: 1, category: 'science',
+      title: '布蘭德博士：什麼是細胞能量共振？',
+      desc: '深入解析人體細胞如何吸收頻譜能量，以及多頻譜技術的科學原理',
+      duration: '18:32', emoji: '🔬', label: '科學原理'
+    },
+    {
+      id: 2, category: 'science',
+      title: 'ATC 實驗室：46 種元素的療癒功效',
+      desc: '美國 ATC 實驗室研究團隊詳解各種微量元素對人體健康的具體作用機制',
+      duration: '24:15', emoji: '⚗️', label: '科學原理'
+    },
+    {
+      id: 3, category: 'sleep',
+      title: '為什麼 VIGOR 能改善睡眠品質？',
+      desc: '點名睡眠專家解析頻譜能量如何調節自律神經，幫助深層睡眠的科學機制',
+      duration: '15:48', emoji: '🌙', label: '睡眠改善'
+    },
+    {
+      id: 4, category: 'sleep',
+      title: '實際案例：失眠 15 年的張女士如何改變',
+      desc: '張女士分享自己對抗失眠多年的心路歷程，以及 VIGOR 如何幫助她重新找回對睡眠的控制權',
+      duration: '12:20', emoji: '😴', label: '睡眠改善'
+    },
+    {
+      id: 5, category: 'chronic',
+      title: '慢性疼痛的非藥物管理方案',
+      desc: '骨科醫師詳解慢性疼痛的成因，以及頻譜能量療癒如何幫助減輕疼痛、改善行動力',
+      duration: '20:05', emoji: '🦴', label: '慢性病管理'
+    },
+    {
+      id: 6, category: 'chronic',
+      title: '糖尿病與代謝疾病的調理策略',
+      desc: '內分泌科醫師分享能量療癒如何改善胰峳素抗性、促進細胞代謝的臨床觀察',
+      duration: '22:40', emoji: '💧', label: '慢性病管理'
+    },
+    {
+      id: 7, category: 'immune',
+      title: '能量療癒如何強化免疫系統',
+      desc: '免疫學專家解析頻譜能量如何活化 NK 細胞與 T 細胞，提升身體自然防稻力',
+      duration: '16:55', emoji: '🛡️', label: '免疫提升'
+    },
+    {
+      id: 8, category: 'recovery',
+      title: '術後康復的最佳輔助方案',
+      desc: '外科醫師分享能量療癒如何加速傷口癒合、減少水躲與疼痛，幫助將近手術的您準備',
+      duration: '19:30', emoji: '🏥', label: '術後恢復'
+    },
+  ];
+
+  let currentEduCategory = 'all';
+
+  function filterEdu(cat, btn) {
+    currentEduCategory = cat;
+    document.querySelectorAll('.edu-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    renderEduGrid();
+  }
+
+  function renderEduGrid() {
+    const filtered = currentEduCategory === 'all' ? eduVideos : eduVideos.filter(v => v.category === currentEduCategory);
+    document.getElementById('edu-grid').innerHTML = filtered.map(v => `
+      <div class="edu-card" onclick="openVideoModal(${v.id})">
+        <div class="edu-thumb">
+          <div class="edu-thumb-inner">
+            <div class="edu-play-btn">▷</div>
+          </div>
+          <div class="edu-thumb-label">${v.label}</div>
+          <div class="edu-duration">${v.duration}</div>
+        </div>
+        <div class="edu-body">
+          <div class="edu-title">${v.emoji} ${v.title}</div>
+          <div class="edu-desc">${v.desc}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function openVideoModal(id) {
+    const v = eduVideos.find(x => x.id === id);
+    if (!v) return;
+    document.getElementById('modal-title').textContent = `${v.emoji} ${v.title}`;
+    document.getElementById('modal-video-desc').textContent = v.desc + '。預約免費體驗，專業顧問將為您詳細說明。';
+    document.getElementById('video-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeVideoModal(e) {
+    if (e && e.target !== document.getElementById('video-modal') && !e.target.classList.contains('video-modal-close')) return;
+    if (e && e.type === 'click' && !e.target.classList.contains('video-modal') && !e.target.classList.contains('video-modal-close')) return;
+    document.getElementById('video-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // 初始化影片區
+  renderEduGrid();
+
   // ── Testimonials ──
   const testimonials = [
     { name: "林女士", category: "睡眠改善", content: "每晚固定照射頭頸部 40 分鐘，快速入睡，完全取代了安眠藥。意外發現打噴嚏、鼻涕問題也跟著消失，過敏造成的眼睛酸澀也好了！", years: "使用 3 年" },
